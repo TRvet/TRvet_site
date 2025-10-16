@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap (atualizar para o domínio de produção quando publicar)
+Sitemap: http://localhost:8000/sitemap.php
+
+# Diretrizes opcionais
+# Crawl-delay pode ser ignorado por alguns mecanismos (Google), ajuste se necessário
+# Crawl-delay: 5

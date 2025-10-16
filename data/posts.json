@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "telerradiologia-veterinaria-o-que-e",
+    "title": "Telerradiologia Veterinária: o que é e como funciona",
+    "excerpt": "Entenda os fundamentos da telerradiologia aplicada à medicina veterinária.",
+    "image": "/assets/img/partners/partner1.svg",
+    "date": "2024-09-01"
+  },
+  {
+    "slug": "importancia-do-ecg-em-pacientes-veterinarios",
+    "title": "Importância do ECG em pacientes veterinários",
+    "excerpt": "Quando solicitar ECG e como interpretar resultados com segurança.",
+    "image": "/assets/img/partners/partner2.svg",
+    "date": "2024-09-10"
+  },
+  {
+    "slug": "boas-praticas-em-radiografia-digital",
+    "title": "Boas práticas em Radiografia Digital",
+    "excerpt": "Checklist rápido para garantir qualidade na aquisição de imagens.",
+    "image": "/assets/img/partners/partner3.svg",
+    "date": "2024-10-05"
+  }
+]

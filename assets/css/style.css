@@ -1,0 +1,513 @@
+:root {
+  --purple-700: #531b6d;
+  --white-soft: #faf8fa;
+  --neon-green: #33ffc5;
+  --text: #222;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--white-soft);
+}
+.text-primary { color: var(--purple-700) !important; }
+.bg-primary-700 { background-color: var(--purple-700); }
+/* Rodapé usa a classe utilitária .bg-primary-700 definida acima */
+/* Sem estilos específicos do footer; usa apenas .bg-primary-700 */
+/* Sem estilos específicos para .footer; usa apenas .bg-primary-700 */
+/* removido: botão neon, usar padrão .btn-purple */
+.topbar { font-family: 'Open Sans', sans-serif; }
+.hero {
+  /* Gradiente com menos opacidade para evitar sobreposição roxa intensa */
+  background:
+    radial-gradient(1200px 400px at 20% 10%, rgba(51,255,197,0.20), transparent 60%),
+    linear-gradient(135deg, rgba(83,27,109,0.80), rgba(83,27,109,0.45));
+  color: #fff;
+}
+
+/* Slider de Capa */
+.hero-slider {
+  position: relative;
+}
+.hero-slider .swiper-hero {
+  width: 100%;
+  height: clamp(380px, 60vh, 680px);
+}
+.hero-slider .swiper-slide {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.hero-slider .swiper-slide::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(83,27,109,0.75), rgba(83,27,109,0.35));
+}
+.hero-slider .swiper-slide.no-overlay::before {
+  background: none;
+}
+.hero-slider .slide-content {
+  position: relative; /* acima do overlay */
+  color: #fff;
+}
+.hero-slider .btn.btn-light { color: #531b6d; }
+/* Garantir que botões no slider usem o foco personalizado sem borda branca */
+.hero-slider .btn:focus,
+.hero-slider .btn:focus-visible {
+  outline: none;
+  box-shadow: none; /* sem halo branco */
+}
+/* Aplicar transição/opacidade no clique para todos botões do hero/slider */
+.hero .btn,
+.hero-slider .btn { transition: opacity .15s ease; }
+.hero .btn:active,
+.hero-slider .btn:active { opacity: 1; }
+
+/* Clique mais escuro apenas para botões roxos no hero/slider */
+.hero .btn-trvet:active,
+.hero-slider .btn-trvet:active,
+.hero .btn-purple:active,
+.hero-slider .btn-purple:active {
+  filter: brightness(.90) !important;
+}
+
+/* Manter botões brancos sem escurecer no clique no hero/slider */
+.hero .btn.btn-light:active,
+.hero-slider .btn.btn-light:active,
+.hero .btn-trvet-light:active,
+.hero-slider .btn-trvet-light:active {
+  filter: none !important;
+  background: #fff !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: 2px solid transparent !important; /* oculta contorno durante o clique */
+}
+.hero-slider .swiper-button-next,
+.hero-slider .swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px 28px;
+  color: transparent;
+  opacity: 1;
+}
+.hero-slider .swiper-button-prev {
+  left: 24px;
+  background-image: url('/assets/img/icons/arrow-left.svg');
+}
+.hero-slider .swiper-button-next {
+  right: 24px;
+  background-image: url('/assets/img/icons/arrow-right.svg');
+}
+.hero-slider .swiper-button-next::after,
+.hero-slider .swiper-button-prev::after { display: none; }
+.hero-slider .swiper-pagination-bullet { background: #fff; opacity: .8; }
+.hero-slider .swiper-pagination-bullet-active { background: var(--neon-green); }
+
+@media (max-width: 768px) {
+  .hero-slider .swiper-hero { height: 420px; }
+  .hero-slider .swiper-button-next,
+  .hero-slider .swiper-button-prev {
+    width: 36px;
+    height: 36px;
+    background-size: 24px 24px;
+  }
+}
+.service-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+.btn-neon {
+  background: linear-gradient(180deg, var(--brand-purple), var(--brand-purple-600));
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 8px 22px rgba(83,42,109,.18);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn-neon:hover,
+.btn-neon:focus {
+  color: #fff !important;
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(83,42,109,.26);
+}
+.btn-neon:active { transform: translateY(0); filter: brightness(.98); color: #fff !important; }
+.partner-logos .slick-slide { margin: 0 12px; }
+.partner-logos img { filter: grayscale(100%); opacity: .8; transition: opacity .2s; }
+.partner-logos img:hover { opacity: 1; filter: none; }
+.whatsapp-float {
+  position: fixed; right: 16px; bottom: 16px; z-index: 9999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; color: #fff; display: grid; place-items: center;
+  box-shadow: 0 10px 30px rgba(37,211,102,.45);
+  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+  will-change: transform, box-shadow, background-color;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.whatsapp-float:hover,
+.whatsapp-float.hovering,
+.whatsapp-float:focus-visible {
+  background: #2fe36f;
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(37,211,102,.35);
+  outline: none;
+}
+
+
+
+:root {
+  --brand-purple: #63307a;
+  --brand-purple-600: #532a6d;
+  --brand-purple-100: #f3e8ff;
+}
+
+.contact-card {
+  border: 2px solid rgba(99,48,122,.35);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,.06);
+}
+
+.contact-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--brand-purple);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+}
+
+.btn-purple {
+  background: var(--brand-purple);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.btn-purple:hover,
+.btn-purple:focus {
+  background: var(--brand-purple-600);
+  color: #fff;
+}
+/* Remover anel branco padrão no foco dos botões roxos simples */
+.btn-purple:focus,
+.btn-purple:focus-visible {
+  outline: none;
+  box-shadow: 0 8px 20px rgba(83,42,109,.18);
+}
+
+/* CTA TRVET moderno */
+.btn-trvet {
+  background: linear-gradient(180deg, var(--brand-purple), var(--brand-purple-600));
+  color: #fff;
+  border: none; /* sem borda visível */
+  border-radius: 10px; /* igual ao padrão .btn-purple */
+  padding: 10px 16px; /* reduzir espaço interno para consistência */
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 8px 22px rgba(83,42,109,.18);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn-trvet:hover {
+  color: #fff !important;
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(83,42,109,.26);
+  border: none;
+}
+.btn-trvet:focus,
+.btn-trvet:focus-visible {
+  outline: none !important; /* remover borda branca padrão */
+  box-shadow: none !important; /* sem halo branco no foco */
+  border: none !important;
+}
+.btn-trvet:active {
+  color: #fff !important;
+  transform: translateY(0);
+  filter: brightness(.98);
+  background: linear-gradient(180deg, var(--brand-purple), var(--brand-purple-600));
+  border: none;
+}
+.btn-trvet.btn-lg { padding: 12px 20px; border-radius: 12px; }
+
+/* Versão branca com mesmo estilo do roxo, mantendo a cor */
+.btn-trvet-light {
+  background: #fff;
+  color: var(--brand-purple);
+  border: 2px solid rgba(99,48,122,.18);
+  border-radius: 10px;
+  padding: 10px 16px; /* menos espaço interno conforme pedido */
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 6px 18px rgba(83,42,109,.12);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn-trvet-light:hover {
+  filter: brightness(1.02);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(83,42,109,.18);
+}
+.btn-trvet-light:focus,
+.btn-trvet-light:focus-visible {
+  outline: none !important; /* sem borda branca */
+  box-shadow: none !important; /* sem halo branco no foco */
+  border-color: rgba(99,48,122,.18);
+}
+.btn-trvet-light:active { transform: translateY(0); filter: brightness(.98); border-color: rgba(99,48,122,.18); }
+.btn-trvet-light.btn-lg { padding: 12px 20px; border-radius: 12px; }
+
+
+/* removida variante de contorno para manter padrão simples */
+.whatsapp-float img { width: 32px; height: 32px; display: block; }
+.swiper-pagination-bullet { background: #fff; opacity: .7; }
+.swiper-pagination-bullet-active { background: var(--neon-green); }
+.hero-title { font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.6rem); }
+.hero-sub { font-weight: 400; font-size: clamp(1rem, 2vw, 1.25rem); opacity: .95; }
+.hero a { color: #fff; }
+/* Garantir que botões brancos no Hero/Slider mantenham texto roxo e não fiquem invisíveis */
+.hero .btn-trvet-light,
+.hero-slider .btn-trvet-light {
+  color: var(--brand-purple) !important;
+  background: #fff !important; /* fundo branco sólido igual aos demais */
+  border: 2px solid rgba(99,48,122,.18);
+  box-shadow: 0 6px 18px rgba(83,42,109,.12);
+}
+.hero .btn.btn-light,
+.hero-slider .btn.btn-light {
+  color: var(--brand-purple) !important;
+  background: #fff !important; /* fundo branco sólido igual ao .btn-trvet-light */
+  border: 2px solid rgba(99,48,122,.18);
+  box-shadow: 0 6px 18px rgba(83,42,109,.12);
+}
+.hero .btn-trvet-light:hover,
+.hero .btn-trvet-light:focus,
+.hero .btn-trvet-light:active,
+.hero-slider .btn-trvet-light:hover,
+.hero-slider .btn-trvet-light:focus,
+.hero-slider .btn-trvet-light:active {
+  color: var(--brand-purple) !important;
+  background: #fff !important; /* manter branco em todos os estados */
+}
+.hero .btn.btn-light:hover,
+.hero .btn.btn-light:focus,
+.hero .btn.btn-light:active,
+.hero-slider .btn.btn-light:hover,
+.hero-slider .btn.btn-light:focus,
+.hero-slider .btn.btn-light:active {
+  color: var(--brand-purple) !important;
+  background: #fff !important; /* manter branco em todos os estados */
+}
+/* Remover anel branco ao focar/clicar em botões no Hero/Slider */
+.hero .btn:focus,
+.hero .btn:active,
+.hero-slider .btn:focus,
+.hero-slider .btn:active {
+  outline: none !important;
+  box-shadow: none !important; /* sem halo no hero/slider */
+}
+
+/* Garantir que o CTA roxo não tenha nenhuma borda visível em nenhum estado */
+.btn.btn-trvet,
+.hero .btn.btn-trvet,
+.hero-slider .btn.btn-trvet { border: none !important; }
+.btn.btn-trvet:focus,
+.btn.btn-trvet:active,
+.btn.btn-trvet:focus-visible,
+.hero .btn.btn-trvet:focus,
+.hero .btn.btn-trvet:active,
+.hero .btn.btn-trvet:focus-visible,
+.hero-slider .btn.btn-trvet:focus,
+.hero-slider .btn.btn-trvet:active,
+.hero-slider .btn.btn-trvet:focus-visible {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  outline-color: transparent;
+}
+
+/* Resets específicos para Firefox (evitar traço interno em foco) */
+button::-moz-focus-inner { border: 0; }
+a.btn:-moz-focusring { outline: none; }
+.hero .btn.btn-light { color: #531b6d; }
+.btn.btn-light {
+  background: #fff;
+  color: var(--brand-purple);
+  border: 2px solid rgba(99,48,122,.18);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 6px 18px rgba(83,42,109,.12);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn.btn-light:hover {
+  color: var(--brand-purple);
+  filter: brightness(1.02);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(83,42,109,.18);
+}
+.btn.btn-light:focus,
+.btn.btn-light:focus-visible {
+  outline: none;
+  box-shadow: 0 8px 20px rgba(83,42,109,.18);
+  border-color: rgba(99,48,122,.18);
+}
+.btn.btn-light:active {
+  color: var(--brand-purple);
+  transform: translateY(0);
+  filter: brightness(.98);
+  border-color: rgba(99,48,122,.18);
+}
+
+/* Global: remover anel branco padrão do Bootstrap nos botões e evitar halo branco */
+.btn:focus,
+.btn:focus-visible,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important; /* sem halo */
+}
+.btn { --bs-btn-focus-shadow-rgb: 0,0,0; -webkit-tap-highlight-color: transparent; }
+.btn-check:focus + .btn,
+.btn-check:checked + .btn:focus,
+.btn-check:focus-visible + .btn {
+  outline: none !important;
+  box-shadow: none !important; /* sem halo */
+}
+
+/* Remover highlight de clique/tap que aparenta traço branco em mobile/desktop */
+a, button, .btn { -webkit-tap-highlight-color: transparent; }
+/* Zerar outline para links focados dentro do hero/slider */
+.hero a:focus,
+.hero a:focus-visible,
+.hero-slider a:focus,
+.hero-slider a:focus-visible { outline: none !important; }
+.section-title { color: var(--purple-700); font-weight: 700; }
+.card-shadow { box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+.nav-link { font-weight: 500; }
+.nav-link:hover { color: var(--purple-700); }
+/* Seção Avaliações Google */
+@media (max-width: 576px) {
+}
+/* Animação simples para elementos revelados */
+.animate__fadeInUp { animation: fadeInUp .7s ease both; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@media (max-width: 768px) {
+  .partner-logos .slick-slide { margin: 0 6px; }
+}
+/* Logo padronizado: mantém proporção com altura fixa */
+.brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+/* Aumenta apenas no header/navbar */
+.navbar .brand-logo {
+  height: 48px;
+}
+
+/* Ícones da barra de contato (topo) */
+.topbar .fa-instagram,
+.topbar .fa-whatsapp {
+  font-size: 1.125rem; /* ~18px, maior que .small */
+  line-height: 1;
+}
+
+/* Estatísticas */
+.stats { background: var(--white-soft); }
+.stat-item { padding: 12px 8px; }
+.stat-number {
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1;
+  color: var(--purple-700);
+}
+.stat-label {
+  margin-top: 6px;
+  font-size: clamp(.8rem, 2.2vw, .95rem);
+  color: #666;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+/* removido: estilos específicos do blog (hero, cards, pills) */
+
+/* Esqueleto PUCRS - lista com imagem e conteúdo */
+.pucrs-blog { background: #f8f9fb; color: #333; }
+.pucrs-list { display: flex; flex-direction: column; gap: 24px; }
+.pucrs-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.pucrs-thumb { display: block; flex: 0 0 320px; max-width: 320px; }
+.pucrs-thumb img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+.pucrs-content { flex: 1; }
+.pucrs-title { font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.9rem); color: var(--purple-700); }
+.pucrs-title a { color: inherit; text-decoration: none; }
+.pucrs-title a:hover { text-decoration: underline; }
+.pucrs-meta { color: #666; font-weight: 600; }
+.pucrs-excerpt { color: #555; font-style: italic; }
+.pucrs-read { margin-top: 8px; }
+
+@media (max-width: 768px) {
+  .pucrs-item { flex-direction: column; }
+  .pucrs-thumb { max-width: 100%; }
+  .pucrs-thumb img { height: 200px; }
+}
+
+/* removido: estilos específicos do blog (hero, cards, pills) */
+/* paleta definida no topo; removida duplicidade de :root */
+
+/* removido: variação neon de botão */
+
+.card-shadow {
+  box-shadow: 0 8px 20px rgba(91,44,160,0.12);
+}
+
+/* Ocultar overlays do Elfsight (apenas interface do proprietário e badge do plano gratuito) */
+/* Nota: em visitantes, o painel do proprietário não aparece; isto previne visualização em dev/logado */
+.elfsight-app-dd57d608-d2c3-4459-93ce-0af9a8003358 .eapps-widget-toolbar,
+.elfsight-app-dd57d608-d2c3-4459-93ce-0af9a8003358 .eapps-admin-panel,
+.elfsight-app-dd57d608-d2c3-4459-93ce-0af9a8003358 .eapps-link {
+  display: none !important;
+  visibility: hidden !important;
+}
+/* Alguns overlays são injetados no body fora do container */
+body > .eapps-widget-toolbar,
+body > .eapps-admin-panel,
+body > .eapps-link,
+body > .eapps-floating-panel,
+body > .eapps-widget-msg,
+body > .eapps-widget-message {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Footer: remover linha tachado de contato, e-mail e links rápidos */
+.footer a,
+.footer .list-unstyled a,
+.footer a.link-light,
+.footer a:visited {
+  text-decoration: none !important;
+}
+.footer a:hover,
+.footer a:focus,
+.footer .list-unstyled a:hover,
+.footer .list-unstyled a:focus {
+  text-decoration: underline !important;
+}
