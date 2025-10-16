@@ -1,0 +1,12 @@
+.git
+node_modules
+.cache
+dist
+.tmp
+.vscode
+.idea
+*.log
+Dockerfile
+.dockerignore
+.DS_Store
+Thumbs.db
