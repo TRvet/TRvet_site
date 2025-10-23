@@ -1,0 +1,10 @@
+tunnel: trvet-local
+credentials-file: C:\Users\User\.cloudflared\5cb52839-a167-4ae4-a54b-ef0118d9c9ae.json
+ingress:
+  - hostname: www.trvet.com.br
+    service: http://127.0.0.1:8000
+  - hostname: trvet.com.br
+    service: http://127.0.0.1:8000
+  - hostname: tunnel.trvet.com.br
+    service: http://127.0.0.1:8000
+  - service: http_status:404

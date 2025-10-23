@@ -1,7 +1,7 @@
 <?php
 $instagram = 'https://www.instagram.com/trvetlaudos/';
 $whatsapp = 'https://wa.me/5547992850502?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!'; // substituir pelo número oficial
-$sistemaLaudos = 'https://app.laudofacil.com/'; // Portal LaudoFácil
+$sistemaLaudos = 'https://app.laudofacil.com/formulario_externo?token=eyJ0ZWFtIjoiVFJWZXQifQ.aGR6tA.xIJ92CNGvFCogHpw72CHKk9VWSg'; // Portal LaudoFácil
 ?>
 <header class="topbar py-1 bg-dark text-white small">
   <div class="container d-flex justify-content-between align-items-center">

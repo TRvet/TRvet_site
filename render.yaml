@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: trvet-website
+    env: docker
+    plan: standard
+    dockerfilePath: Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    regions:
+      - oregon

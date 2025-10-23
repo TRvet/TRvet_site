@@ -10,6 +10,13 @@ $defaultMeta = [
 $meta = isset($meta) && is_array($meta) ? array_merge($defaultMeta, $meta) : $defaultMeta;
 // Base URL (sem path)
 $baseUrl = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . ($_SERVER['HTTP_HOST'] ?? 'localhost');
+
+// Redirect apex to www (server-side), preserves path and query
+if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'trvet.com.br') {
+    $target = 'https://www.trvet.com.br' . ($_SERVER['REQUEST_URI'] ?? '/');
+    header('Location: ' . $target, true, 301);
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -85,6 +92,20 @@ $baseUrl = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . ($_SERVER['HTTP
 
     <!-- Acessibilidade básica -->
     <meta name="theme-color" content="#531b6d" />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PWSNBZGJ');
+    </script>
+
+    <!-- GA4 é carregado via Google Tag Manager (GTM) -->
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWSNBZGJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="visually-hidden-focusable" href="#conteudo-principal">Ir para conteúdo</a>
