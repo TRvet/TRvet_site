@@ -6,5 +6,4 @@ services:
     dockerfilePath: Dockerfile
     healthCheckPath: /
     autoDeploy: true
-    regions:
-      - oregon
+    region: oregon
